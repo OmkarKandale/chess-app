@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import Board from "./Board";
 import { gameSubject } from "./Game";
 
 const App = () => {
@@ -10,7 +11,11 @@ const App = () => {
 		return () => subscribe.unsubscribe();
 	}, []);
 
-	return <div></div>;
+	return (
+		<div>
+			<Board board={board} />
+		</div>
+	);
 };
 
 export default App;
