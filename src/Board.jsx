@@ -3,7 +3,7 @@ import React from "react";
 const Board = ({ board }) => {
 	return (
 		<div className="board">
-			{board.map((piece, i) => (
+			{board.flat().map((piece, i) => (
 				<div key={i}>
 					<p>{JSON.stringify(piece)}</p>
 				</div>
