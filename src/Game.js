@@ -15,7 +15,7 @@ export const handleMove = (from, to) => {
 	const promotions = chess
 		.moves({ verbose: true })
 		.filter((m) => m.promotion);
-	// console.table(promotions);
+	console.table(promotions);
 
 	if (promotions.some((p) => `${p.from}: ${p.to}` === `${from}: ${to}`)) {
 		const pendingPromotion = { from, to, color: promotions[0].color };
@@ -35,9 +35,10 @@ export const move = (from, to) => {
 	}
 };
 
-const updateGame = () => {
+const updateGame = (pendingPromotion) => {
 	const newGame = {
 		board: chess.board(),
+		pendingPromotion,
 	};
 	gameSubject.next(newGame);
 };
