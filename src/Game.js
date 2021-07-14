@@ -28,8 +28,13 @@ export const handleMove = (from, to) => {
 	}
 };
 
-export const move = (from, to) => {
-	const legalMove = chess.move({ from, to });
+export const move = (from, to, promotion) => {
+	let tempMove = { from, to };
+	if (promotion) {
+		tempMove.promotion = promotion;
+	}
+
+	const legalMove = chess.move(tempMove);
 	if (legalMove) {
 		updateGame();
 	}
