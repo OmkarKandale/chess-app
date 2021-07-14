@@ -29,7 +29,7 @@ const BoardSquare = ({ piece, black, position }) => {
 		<div className="board-square" ref={drop}>
 			<Square black={black}>
 				{promotion ? (
-					<Promote />
+					<Promote promotion={promotion} />
 				) : piece ? (
 					<Piece piece={piece} position={position} />
 				) : null}
