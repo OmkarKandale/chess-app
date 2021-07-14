@@ -18,9 +18,14 @@ export const handleMove = (from, to) => {
 	// console.table(promotions);
 
 	if (promotions.some((p) => `${p.from}: ${p.to}` === `${from}: ${to}`)) {
-		console.log("promote");
+		const pendingPromotion = { from, to, color: promotions[0].color };
+		updateGame(pendingPromotion);
 	}
-	move(from, to);
+	const { pendingPromotion } = gameSubject.getValue();
+
+	if (!pendingPromotion) {
+		move(from, to);
+	}
 };
 
 export const move = (from, to) => {
