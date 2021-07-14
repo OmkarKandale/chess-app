@@ -6,3 +6,7 @@ const chess = new Chess();
 export const gameSubject = new BehaviorSubject({
 	board: chess.board(),
 });
+
+export const move = (from, to) => {
+	console.log(from, to);
+};
