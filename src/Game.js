@@ -3,7 +3,7 @@ import { BehaviorSubject } from "rxjs";
 
 // let promotion = "rnb2bnr/pppPkppp/8/4p3/7q/8/PPPP1PPP/RNBQKBNR w KQ - 1 5";
 // let staleMate = "4k3/4P3/4K3/8/8/8/8/8 b - - 0 78";
-// let chakeMate = "rnb1kbnr/pppp1ppp/8/4p3/5PPq/8/PPPPP2P/RNBQKBNR w KQkq - 1 3";
+// let checkMate = "rnb1kbnr/pppp1ppp/8/4p3/5PPq/8/PPPPP2P/RNBQKBNR w KQkq - 1 3";
 // let insufficientMaterial = "k7/8/n7/8/8/8/8/7K b - - 0 1";
 
 const chess = new Chess();
@@ -18,7 +18,6 @@ export const handleMove = (from, to) => {
 	const promotions = chess
 		.moves({ verbose: true })
 		.filter((m) => m.promotion);
-	console.table(promotions);
 
 	if (promotions.some((p) => `${p.from}: ${p.to}` === `${from}: ${to}`)) {
 		const pendingPromotion = { from, to, color: promotions[0].color };
@@ -55,7 +54,7 @@ const updateGame = (pendingPromotion) => {
 };
 
 const getGameResult = () => {
-	if (chess.in_check_mate()) {
+	if (chess.in_checkmate()) {
 		const winner = chess.turn() === "w" ? "BLACK" : "WHITE";
 		return `CHECKMATE - WINNER - ${winner}`;
 	} else if (chess.in_draw()) {
