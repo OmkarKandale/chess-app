@@ -14,6 +14,11 @@ export const initGame = () => {
 	updateGame();
 };
 
+export const resetGame = () => {
+	chess.reset();
+	updateGame();
+};
+
 export const handleMove = (from, to) => {
 	const promotions = chess
 		.moves({ verbose: true })

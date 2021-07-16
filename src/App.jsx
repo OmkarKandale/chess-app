@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Board from "./Board";
-import { gameSubject, initGame } from "./Game";
+import { gameSubject, initGame, resetGame } from "./Game";
 
 const App = () => {
 	const [board, setBoard] = useState([]);
@@ -23,7 +23,7 @@ const App = () => {
 			{isGameOver && (
 				<h2 className="vertical-text">
 					GAME OVER
-					<button>
+					<button onClick={resetGame}>
 						<span className="vertical-text">NEW GAME</span>
 					</button>
 				</h2>
