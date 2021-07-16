@@ -11,6 +11,12 @@ const chess = new Chess();
 export const gameSubject = new BehaviorSubject();
 
 export const initGame = () => {
+	const savedGame = localStorage.getItem("savedGame");
+
+	if (savedGame) {
+		chess.load(savedGame);
+	}
+
 	updateGame();
 };
 
@@ -49,6 +55,7 @@ export const move = (from, to, promotion) => {
 
 const updateGame = (pendingPromotion) => {
 	const isGameOver = chess.game_over();
+
 	const newGame = {
 		board: chess.board(),
 		pendingPromotion,
@@ -56,6 +63,9 @@ const updateGame = (pendingPromotion) => {
 		turn: chess.turn(),
 		result: isGameOver ? getGameResult : null,
 	};
+
+	localStorage.setItem("savedGame", chess.fen());
+
 	gameSubject.next(newGame);
 };
 
