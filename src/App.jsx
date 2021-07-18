@@ -19,8 +19,10 @@ const App = () => {
 	}
 
 	if (!user) {
-		return "No User";
+		return <UserForm />;
 	}
+
+	return "success";
 };
 
 export default App;
