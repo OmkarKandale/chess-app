@@ -22,7 +22,18 @@ const App = () => {
 		return <UserForm />;
 	}
 
-	return "success";
+	return (
+		<Router>
+			<Switch>
+				<Route exact path="/">
+					<Home />
+				</Route>
+				<Route exact path="/game/:id">
+					<GameApp />
+				</Route>
+			</Switch>
+		</Router>
+	);
 };
 
 export default App;
